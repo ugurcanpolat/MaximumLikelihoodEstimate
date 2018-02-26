@@ -1,0 +1,43 @@
+\documentclass{article}
+% Extra packages for graphics, header control, good math typesetting, and margin
+% control:
+\usepackage{graphicx, fancyhdr, amssymb, amsmath, geometry}
+\geometry{ left = 1.25in, right = 1.25in, top = 1.25in, bottom = 1.25in }
+\pagestyle{fancy}
+\setlength{\headsep}{.5in}
+\renewcommand{\headrulewidth}{.25pt}
+\lhead{\footnotesize BLG 454E Learning From Data}
+\chead{}
+\rhead{\footnotesize \today}
+
+\lfoot{}
+\cfoot{\footnotesize Page \thepage}
+\rfoot{}
+% The right way to define math operators, so that they display with the correct
+% font and spacing:
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\fancyhead[C]{\em Term Project Report}
+
+    \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+    \def\independenT#1#2{\mathrel{\setbox0\hbox{$#1#2$}%
+    \copy0\kern-\wd0\mkern4mu\box0}} 
+
+\begin{document}
+\title{\bf BLG 454E Learning From Data (Spring 2018)}
+\author{\bf Homework I}
+\date{}
+\maketitle
+
+
+\section{Question 1}
+
+\section{Question 2}
+
+\section{Question 3}
+
+\section{Question 4}
+
+
+
+\end{document}

@@ -1,0 +1,11 @@
+# Exclude macOS directory service files
+.DS_Store
+
+# Exclude assignment/report pdf files
+*.pdf 
+
+# Exclude LaTex Typeset logging files
+*.log
+*.synctex
+*.gz
+*.aux
