@@ -19,6 +19,11 @@
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\CondProb}{Pr}
 \DeclareMathOperator{\argmax}{argmax}
+\DeclareMathOperator{\moves}{moves}
+\DeclareMathOperator{\without}{without}
+\DeclareMathOperator{\visiting}{visiting}
+\DeclareMathOperator{\pointG}{G}
+
 \fancyhead[C]{\em Term Project Report}
 
     \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
@@ -59,7 +64,104 @@ Weekend rain probability relationships:
 \end{split}
 \end{equation*}
 \section{Question 2}
-A
+Since we are asked to find probability that the bug reaches point A in 2 moves or less and starting at A will reach the point in 0 moves, there are 3 cases to be examined: reaching the point in 0 moves, in 1 moves and in 2 moves.
+
+The probability for the case where reaching the point in 0 moves:  
+\begin{equation*}
+	\begin{aligned}[c]
+	P: Point \\
+	M: Move \\
+	\CondProb{(P = A)} = \frac{1}{7} \\
+	\CondProb{(0 \moves)} = \frac{1}{7}
+	\end{aligned}
+\end{equation*}
+ 
+The probability of selecting the starting point which may lead to reach in 1 moves:
+\begin{equation*}
+	\begin{aligned}[c]
+	\CondProb{(P = B)} = \CondProb{(P = G)} = \CondProb{(P = F)} = \frac{1}{7} \\
+	\end{aligned}
+\end{equation*}
+The probability of reaching to point A from the selected point:
+\begin{equation*}
+	\begin{aligned}[c]
+	\CondProb{(M = A \mid P = B)} = \frac{1}{3} \\
+	\CondProb{(M = A \mid P = G)} = \frac{1}{6} \\
+	\CondProb{(M = A \mid P = F)} = \frac{1}{3} \\
+	\end{aligned}
+\end{equation*}
+The probability of reaching to point A from the starting points B,G, and F:
+\begin{equation*}
+	\begin{aligned}[c]
+	\CondProb{(P = B \mid M = A)} = \CondProb{(P = B)}\times\CondProb{(M = A \mid P = B)} = \frac{1}{7}\times\frac{1}{3}  = \frac{1}{21}  \\
+	\CondProb{(P = G \mid M = A)} = \CondProb{(P = G)}\times\CondProb{(M = A \mid P = G)} = \frac{1}{7}\times\frac{1}{6}  = \frac{1}{42}  \\
+	\CondProb{(P = F \mid M = A)} = \CondProb{(P = F)}\times\CondProb{(M = A \mid P = F)} = \frac{1}{7}\times\frac{1}{3}  = \frac{1}{21}  \\
+	\end{aligned}
+\end{equation*}
+The probability for the case where reaching the point in 1 moves:
+\begin{equation*}
+	\begin{aligned}[c]	
+	\CondProb{(1 \moves)} =  \frac{1}{21} +  \frac{1}{42} + \frac{1}{21} =  \frac{5}{42}
+	\end{aligned}
+\end{equation*}
+
+The probability of reaching to point G from points x = \{A, B, C, D, E and F\} similar to the previous case:
+\begin{equation*}
+	\begin{aligned}[c]
+	\CondProb{(P = x \mid M = G)} = \CondProb{(P = x)}\times\CondProb{(M = A \mid P = x)} = \frac{1}{7}\times\frac{1}{3}  = \frac{1}{21}  \\
+	\end{aligned}
+\end{equation*}
+
+The probability of reaching to point A from point G given that bug reaches to point G from x = \{A, B, C, D, E and F\}:
+\begin{equation}
+	\begin{aligned}[c]
+	\CondProb{((P = G \mid S = x) \mid M = A))} = \CondProb{(P = x \mid M = G)}\times\CondProb{(M = A \mid P = G)} = \frac{1}{21}\times\frac{1}{6}  = \frac{1}{126}  \\
+	\end{aligned}
+\end{equation}
+
+The probability of reaching to point A in 2 moves by visiting point G can be calculated by summing up the probabilities found for starting point A, B, C, D, E and F in equation 1:
+\begin{equation*}
+	\begin{aligned}[c]
+	\CondProb{(2 \moves \visiting \pointG)} = 6\times\CondProb{((P = G \mid S = x) \mid M = A))} = 6\times\frac{1}{126} =  \frac{1}{21} \\
+	\end{aligned}
+\end{equation*}
+
+The probability of reaching to point A in 2 moves without visiting point G from y = \{A, C, E\} using x = \{B, F\}:
+\begin{equation}
+	\begin{aligned}[c]
+	\CondProb{((P = x \mid M = y) \mid M = A)} = \CondProb{(P = y)}\times\CondProb{(M = x \mid P = y)}\times\CondProb{(M = A \mid P = x)} = \frac{1}{7}\times\frac{1}{3}\times\frac{1}{3} = \frac{1}{63}  \\
+	\end{aligned}
+\end{equation}
+
+Note that the bug can reach to either B or F and can reach to point A if it selects starting point as A. The probability of reaching to point A in 2 moves without visiting point G can be calculated by summing up the probabilities found for starting point A, C, and E in equation 2:
+\begin{equation*}
+	\begin{aligned}[c]
+	\CondProb{(2 \moves \without \visiting \pointG)} = 4\times\CondProb{((P = G \mid S = x) \mid M = A))} = 4\times\frac{1}{63} =  \frac{4}{63} \\
+	\end{aligned}
+\end{equation*}
+
+By choosing G as starting point and visiting points x = \{B, F\} the bug can reach to A in 2 moves with probability:
+\begin{equation*}
+	\begin{aligned}[c]
+	\CondProb{((P = x \mid M = G) \mid M = A)} = \CondProb{(P = G)}\times\CondProb{(M = x \mid P = G)}\times\CondProb{(M = A \mid P = x)} = \frac{1}{7}\times\frac{1}{6}\times\frac{1}{3} = \frac{1}{126}  \\
+	\CondProb{(S = G)} = 2\times\frac{1}{126} = \frac{1}{63}
+	\end{aligned}
+\end{equation*}
+
+Hence, the probability for the case where reaching the point in 2 moves:
+\begin{equation*}
+	\begin{aligned}[c]	
+	\CondProb{(2 \moves)} =  \CondProb{(2 \moves \visiting \pointG)} + \CondProb{(2 \moves \without \visiting \pointG)} + \CondProb{(S = G)} = \frac{1}{21} +  \frac{4}{63} + \frac{1}{63}=  \frac{8}{63}
+	\end{aligned}
+\end{equation*}
+
+Therefore, the probability the probability that the bug reaches point A in 2 moves or less as donated by event A:
+\begin{equation*}
+	\begin{aligned}[c]	
+	\CondProb{(A)} =  \CondProb{(0 \moves)} + \CondProb{(1\moves)}  + \CondProb{(2\moves)}= \frac{1}{7} +  \frac{5}{42} +  \frac{8}{63} = \boxed{\frac{7}{18}}
+	\end{aligned}
+\end{equation*}
+
 \section{Question 3}
 A
 \section{Question 4}
