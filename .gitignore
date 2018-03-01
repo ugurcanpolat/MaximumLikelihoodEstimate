@@ -9,3 +9,6 @@
 *.synctex
 *.gz
 *.aux
+
+# Exclude plot sag
+*.svg

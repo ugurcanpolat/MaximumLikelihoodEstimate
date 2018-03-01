@@ -24,7 +24,7 @@
 \DeclareMathOperator{\visiting}{visiting}
 \DeclareMathOperator{\pointG}{G}
 
-\fancyhead[C]{\em Term Project Report}
+\fancyhead[C]{\em Homework 1 Report}
 
     \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
     \def\independenT#1#2{\mathrel{\setbox0\hbox{$#1#2$}%
@@ -45,14 +45,14 @@
 \section{Question 1}
 Weekend rain probability relationships:
 \begin{equation*}
-\begin{aligned}
+	\begin{aligned}
 	X : Saturday \\
 	Y : Sunday \\
 	\CondProb{(X = 1)} = 0.25 \\
 	\CondProb{(X = 0)} = 0.75 \\
 	\CondProb{(Y = 1 \mid X = 1)} = 0.50 \\
 	\CondProb{(Y = 1 \mid X = 0)} = 0.25 
-\end{aligned}
+	\end{aligned}
 \end{equation*}
 	We can obtain the probability that it rained on Saturday given that it rained on Sunday by using the probabilities given above and Bayes' Theorem:
 \begin{equation*}
@@ -68,7 +68,7 @@ Since we are asked to find probability that the bug reaches point A in 2 moves o
 
 The probability for the case where reaching the point in 0 moves:  
 \begin{equation*}
-	\begin{aligned}[c]
+	\begin{aligned}
 	P: Point \\
 	M: Move \\
 	\CondProb{(P = A)} = \frac{1}{7} \\
@@ -78,21 +78,19 @@ The probability for the case where reaching the point in 0 moves:
  
 The probability of selecting the starting point which may lead to reach in 1 moves:
 \begin{equation*}
-	\begin{aligned}[c]
-	\CondProb{(P = B)} = \CondProb{(P = G)} = \CondProb{(P = F)} = \frac{1}{7} \\
-	\end{aligned}
+	\CondProb{(P = B)} = \CondProb{(P = G)} = \CondProb{(P = F)} = \frac{1}{7}
 \end{equation*}
 The probability of reaching to point A from the selected point:
 \begin{equation*}
-	\begin{aligned}[c]
+	\begin{aligned}
 	\CondProb{(M = A \mid P = B)} = \frac{1}{3} \\
 	\CondProb{(M = A \mid P = G)} = \frac{1}{6} \\
 	\CondProb{(M = A \mid P = F)} = \frac{1}{3} \\
 	\end{aligned}
 \end{equation*}
-The probability of reaching to point A from the starting points B,G, and F:
+The probability of reaching to point A from the starting points B, G, and F:
 \begin{equation*}
-	\begin{aligned}[c]
+	\begin{aligned}
 	\CondProb{(P = B \mid M = A)} = \CondProb{(P = B)}\times\CondProb{(M = A \mid P = B)} = \frac{1}{7}\times\frac{1}{3}  = \frac{1}{21}  \\
 	\CondProb{(P = G \mid M = A)} = \CondProb{(P = G)}\times\CondProb{(M = A \mid P = G)} = \frac{1}{7}\times\frac{1}{6}  = \frac{1}{42}  \\
 	\CondProb{(P = F \mid M = A)} = \CondProb{(P = F)}\times\CondProb{(M = A \mid P = F)} = \frac{1}{7}\times\frac{1}{3}  = \frac{1}{21}  \\
@@ -100,49 +98,37 @@ The probability of reaching to point A from the starting points B,G, and F:
 \end{equation*}
 The probability for the case where reaching the point in 1 moves:
 \begin{equation*}
-	\begin{aligned}[c]	
 	\CondProb{(1 \moves)} =  \frac{1}{21} +  \frac{1}{42} + \frac{1}{21} =  \frac{5}{42}
-	\end{aligned}
 \end{equation*}
 
 The probability of reaching to point G from points x = \{A, B, C, D, E and F\} similar to the previous case:
 \begin{equation*}
-	\begin{aligned}[c]
-	\CondProb{(P = x \mid M = G)} = \CondProb{(P = x)}\times\CondProb{(M = A \mid P = x)} = \frac{1}{7}\times\frac{1}{3}  = \frac{1}{21}  \\
-	\end{aligned}
+	\CondProb{(P = x \mid M = G)} =  \CondProb{(P = x)}\times\CondProb{(M = A \mid P = x)} = \frac{1}{7}\times\frac{1}{3}  = \frac{1}{21} 
 \end{equation*}
 
 The probability of reaching to point A from point G given that bug reaches to point G from x = \{A, B, C, D, E and F\}:
-\begin{equation}
-	\begin{aligned}[c]
-	\CondProb{((P = G \mid S = x) \mid M = A))} = \CondProb{(P = x \mid M = G)}\times\CondProb{(M = A \mid P = G)} = \frac{1}{21}\times\frac{1}{6}  = \frac{1}{126}  \\
-	\end{aligned}
+\begin{equation} \label{eq:solve1}
+	\CondProb{((P = G \mid S = x) \mid M = A))} = \CondProb{(P = x \mid M = G)}\times\CondProb{(M = A \mid P = G)} = \frac{1}{21}\times\frac{1}{6}  = \frac{1}{126} 
 \end{equation}
 
-The probability of reaching to point A in 2 moves by visiting point G can be calculated by summing up the probabilities found for starting point A, B, C, D, E and F in equation 1:
+The probability of reaching to point A in 2 moves by visiting point G can be calculated by summing up the probabilities found for starting point A, B, C, D, E and F in equation~\ref{eq:solve1}:
 \begin{equation*}
-	\begin{aligned}[c]
-	\CondProb{(2 \moves \visiting \pointG)} = 6\times\CondProb{((P = G \mid S = x) \mid M = A))} = 6\times\frac{1}{126} =  \frac{1}{21} \\
-	\end{aligned}
+	\CondProb{(2 \moves \visiting \pointG)} = 6\times\CondProb{((P = G \mid S = x) \mid M = A))} = 6\times\frac{1}{126} =  \frac{1}{21}
 \end{equation*}
 
 The probability of reaching to point A in 2 moves without visiting point G from y = \{A, C, E\} using x = \{B, F\}:
-\begin{equation}
-	\begin{aligned}[c]
-	\CondProb{((P = x \mid M = y) \mid M = A)} = \CondProb{(P = y)}\times\CondProb{(M = x \mid P = y)}\times\CondProb{(M = A \mid P = x)} = \frac{1}{7}\times\frac{1}{3}\times\frac{1}{3} = \frac{1}{63}  \\
-	\end{aligned}
+\begin{equation} \label{eq:solve2}
+	\CondProb{((P = x \mid M = y) \mid M = A)} = \CondProb{(P = y)}\times\CondProb{(M = x \mid P = y)}\times\CondProb{(M = A \mid P = x)} = \frac{1}{7}\times\frac{1}{3}\times\frac{1}{3} = \frac{1}{63} 
 \end{equation}
 
-Note that the bug can reach to either B or F and can reach to point A if it selects starting point as A. The probability of reaching to point A in 2 moves without visiting point G can be calculated by summing up the probabilities found for starting point A, C, and E in equation 2:
+Note that the bug can reach to either B or F and can reach to point A if it selects starting point as A. The probability of reaching to point A in 2 moves without visiting point G can be calculated by summing up the probabilities found for starting point A, C, and E in equation~\ref{eq:solve2}:
 \begin{equation*}
-	\begin{aligned}[c]
-	\CondProb{(2 \moves \without \visiting \pointG)} = 4\times\CondProb{((P = G \mid S = x) \mid M = A))} = 4\times\frac{1}{63} =  \frac{4}{63} \\
-	\end{aligned}
+	\CondProb{(2 \moves \without \visiting \pointG)} = 4\times\CondProb{((P = G \mid S = x) \mid M = A)} = 4\times\frac{1}{63} =  \frac{4}{63}
 \end{equation*}
 
 By choosing G as starting point and visiting points x = \{B, F\} the bug can reach to A in 2 moves with probability:
 \begin{equation*}
-	\begin{aligned}[c]
+	\begin{aligned}
 	\CondProb{((P = x \mid M = G) \mid M = A)} = \CondProb{(P = G)}\times\CondProb{(M = x \mid P = G)}\times\CondProb{(M = A \mid P = x)} = \frac{1}{7}\times\frac{1}{6}\times\frac{1}{3} = \frac{1}{126}  \\
 	\CondProb{(S = G)} = 2\times\frac{1}{126} = \frac{1}{63}
 	\end{aligned}
@@ -150,20 +136,79 @@ By choosing G as starting point and visiting points x = \{B, F\} the bug can rea
 
 Hence, the probability for the case where reaching the point in 2 moves:
 \begin{equation*}
-	\begin{aligned}[c]	
 	\CondProb{(2 \moves)} =  \CondProb{(2 \moves \visiting \pointG)} + \CondProb{(2 \moves \without \visiting \pointG)} + \CondProb{(S = G)} = \frac{1}{21} +  \frac{4}{63} + \frac{1}{63}=  \frac{8}{63}
-	\end{aligned}
 \end{equation*}
 
 Therefore, the probability the probability that the bug reaches point A in 2 moves or less as donated by event A:
 \begin{equation*}
-	\begin{aligned}[c]	
 	\CondProb{(A)} =  \CondProb{(0 \moves)} + \CondProb{(1\moves)}  + \CondProb{(2\moves)}= \frac{1}{7} +  \frac{5}{42} +  \frac{8}{63} = \boxed{\frac{7}{18}}
-	\end{aligned}
 \end{equation*}
 
 \section{Question 3}
-A
+\subsection{Estimation}
+We need to write down the formula of the the likelihood function for normal distribution and derive the equation to find the maximum likelihood estimate for the pair ($\mu$,$\sigma$\textsuperscript{2}).
+\newline\newline
+The likelihood function for normal distribution with pair ($\mu$,$\sigma$\textsuperscript{2}), and dataseet \writex{x}{1},\writex{x}{2},\writex{x}{3},...,\writex{x}{n}:
+\begin{equation*}
+	L\left(\mu,\sigma;x_1,...,x_n\right) = \left(2\pi\sigma^2\right)^{-n/2}\exp\left(-\frac{1}{2\sigma^2}\sum_{j=1}^{n} \left(x_j-\mu\right)^{2}\right)
+\end{equation*}
+
+In order to get rid of exponent to simplify operations, we can take logarithm ($\ln$) of both sides. This formulation is called as log-likelihood function:
+
+\begin{equation*}
+	l\left(\mu,\sigma;x_1,...,x_n\right) = -\frac{n}{2}\ln(2\pi)-\frac{n}{2}\ln\left(\sigma^{2}\right)--\frac{1}{2\sigma^2}\sum_{j=1}^{n} \left(x_j-\mu\right)^{2}
+\end{equation*}
+
+Since we want this likelihood to be maximized in order to make it fit to our data, we want this whole function value to be maximized. If we consider the variable affects the value in this equation as $\mu$; therefore, we need to minimize the terms of the summation which leads to maximizing the likelihood because of the minus sign of the sum. In result, we will find maximum likelihood estimate for $\mu$.  
+\begin{equation*}
+	\begin{aligned}
+	\sum_{j=1}^{n} \left(x_j-\mu\right)^{2} &= \left(x_1-\mu\right)^{2} + \left(x_2-\mu\right)^{2} + ... + \left(x_n-\mu\right)^{2} \\
+	&= \left(x_1^{2}-2x_1\mu +\mu^{2}\right) + \left(x_2^{2}-2x_2\mu +\mu^{2}\right) + ... + \left(x_n^{2}-2x_n\mu +\mu^{2}\right) \\
+	&= n\mu^{2} -2\mu(x_1+x_2+...+x_n) + (x_1^{2}+x_2^{2}+...+x_n^{2})
+	\end{aligned}
+\end{equation*}
+
+The sum of data values \writex{x}{n} will be constant value. Hence, this equation is quadratic equation regarding to $\mu$. We must get derivative of the equation to find the estimation value of $\mu$ where derivative will be zero. We will get maximum likelihood estimation for $\mu$ as:
+
+\begin{equation*}
+	\begin{aligned}
+	\frac{d\left(n\mu^{2} -2\mu(x_1+x_2+...+x_n) + (x_1^{2}+x_2^{2}+...+x_n^{2})\right)}{d\mu} &= 0 \\
+	2n\mu -2(x_1+x_2+...+x_n) &= 0 \\
+	2n\mu = 2(x_1+x_2+...+x_n) \\
+	\mu_e = \frac{(x_1+x_2+...+x_n)}{n} \\
+	\boxed{\mu_e = \frac{1}{n}\sum_{j=1}^{n}x_j}
+	\end{aligned}
+\end{equation*}
+
+Hence derivative-zero points give the change points (minimum/maximum) of function, we must get derivative of the log-likelihood function respect to $\sigma$ in order to find maximum likelihood estimation: 
+\begin{equation*}
+	\begin{aligned}
+	\frac{d\left(l\left(\mu,\sigma;x_1,...,x_n\right)\right)}{d\sigma} = 0 \\
+	-\frac{n}{2\sigma^{2}}+\left[\frac{1}{2}\sum_{j=1}^{n}\left(x_j-\mu\right)^{2}\right]\frac{1}{\left(\sigma^{2}\right)^{2}} = 0\\
+	\frac{1}{2\sigma^{2}}\left[\frac{1}{\sigma^{2}}\sum_{j=1}^{n}\left(x_j-\mu\right)^{2}-n\right] = 0 \\
+	\end{aligned}
+\end{equation*}
+
+Since $\sigma\textsuperscript{2}$ can not be equal to zero:
+\begin{equation*}
+	\begin{aligned}
+	\frac{1}{\sigma^{2}}\sum_{j=1}^{n}\left(x_j-\mu\right)^{2}-n &= 0\\
+	\frac{1}{\sigma^{2}}\sum_{j=1}^{n}\left(x_j-\mu\right)^{2} &= n\\
+	\sum_{j=1}^{n}\left(x_j-\mu\right)^{2} &= n\sigma^{2}\\
+	\end{aligned}
+\end{equation*}
+
+Then, we can find the maximum likelihood estimate for $\sigma$\textsuperscript{2}:
+\begin{equation*}
+	\boxed{\sigma_e^{2} = \frac{1}{n}\sum_{j=1}^{n}\left(x_j-\mu\right)^{2}} \\
+\end{equation*}
+
+\subsection{Implementation}
+%%%%%%%%%%%%%%
+
+
+
+
 \section{Question 4}
 \subsection{}
 The prior probability for \writey{y}:
@@ -235,7 +280,7 @@ We can predict the class label for (\writex{x}{1}, \writex{x}{2}, \writex{x}{3})
 	\CondProb{(y = +  \mid x_1 = 1, x_2 = 1, x_3 = 1)} = 0.096\quad>\quad\CondProb{(y = -  \mid x_1 = 1, x_2 = 1, x_3 = 1)} = 0.016
 \end{equation*}
 
-Therefore, the class would be \writey{y} = + according to Naive Bayes classifier.
+Therefore, the class would be \underline{\writey{y} = +} according to Naive Bayes classifier.
 
 \subsection{}
 The asked probability values to calculate: 
@@ -256,6 +301,6 @@ According to independence method of Probability theorem if two events are indepe
 	\end{aligned}
 \end{equation*}
 
-It clearly shows that \writex{x}{1} and  \writex{x}{2} are independent. 
+It clearly shows that \writex{x}{1} and  \writex{x}{2} are \underline{independent}. 
 
 \end{document}
