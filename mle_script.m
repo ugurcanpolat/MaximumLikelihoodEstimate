@@ -12,6 +12,7 @@ for count = 1:n % use equation for mu estimation
     mu = mu + x(count);
 end
 mu = mu / n; % mean
+fprintf('Mean (mu) = %f\n', mu);
 
 std = 0;
 for count = 1:n % use equation for deviation estimation
@@ -19,6 +20,7 @@ for count = 1:n % use equation for deviation estimation
 end
 std = std / n; 
 std = sqrt(std); % standard deviation
+fprintf('Standard Deviation (sigma) = %f\n', std);
 
 MAX = max(x); % maximum value of given data
 MIN = min(x); % minimum value of given data
@@ -30,6 +32,8 @@ plot(x_e,y_e,'LineWidth',1.5) % plot with bold line
 hold on
 % Plot a histogram with normalization probability density function
 histogram(x,'Normalization','pdf') 
-xlim([0 18]) % x limit of the plot
-ylim([0 0.16]) % y limit of the plot
+xlim([0 18]) % x-axis limit of the plot
+ylim([0 0.16]) % y-axis limit of the plot
+title(['MLE results: mu = ',num2str(mu), ' std = ' num2str(std)]);
+legend('MLE fixed distribution','data')
 hold off

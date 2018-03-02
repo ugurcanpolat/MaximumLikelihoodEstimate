@@ -10,5 +10,6 @@
 *.gz
 *.aux
 
-# Exclude plot svg
+# Exclude plot files
 *.svg
+*.jpg

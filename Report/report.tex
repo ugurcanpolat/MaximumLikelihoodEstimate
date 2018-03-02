@@ -1,7 +1,7 @@
 \documentclass{article}
 % Extra packages for graphics, header control, good math typesetting, and margin
 % control:
-\usepackage{graphicx, fancyhdr, amssymb, amsmath, geometry}
+\usepackage{graphicx, fancyhdr, amssymb, amsmath, geometry,svg}
 \geometry{ left = 1.25in, right = 1.25in, top = 1.25in, bottom = 1.25in }
 \pagestyle{fancy}
 \setlength{\headsep}{.5in}
@@ -145,7 +145,7 @@ Therefore, the probability the probability that the bug reaches point A in 2 mov
 \end{equation*}
 
 \section{Question 3}
-\subsection{Estimation}
+\subsection{Estimation} \label{subsec:part3a}
 We need to write down the formula of the the likelihood function for normal distribution and derive the equation to find the maximum likelihood estimate for the pair ($\mu$,$\sigma$\textsuperscript{2}).
 \newline\newline
 The likelihood function for normal distribution with pair ($\mu$,$\sigma$\textsuperscript{2}), and dataseet \writex{x}{1},\writex{x}{2},\writex{x}{3},...,\writex{x}{n}:
@@ -204,11 +204,24 @@ Then, we can find the maximum likelihood estimate for $\sigma$\textsuperscript{2
 \end{equation*}
 
 \subsection{Implementation}
-%%%%%%%%%%%%%%
+In this part, I implemented the maximum likelihood function in Matlab using the formulas found for $\mu$ and $\sigma$ in the part~\ref{subsec:part3a}. 
+\newline\newline
+The implementation finds $\mu$ and $\sigma$ estimates, then uses the found values and linear space in the range of dataset to create a linear space of maximum likelihood distribution. The $\mu$ and $\sigma$ values found by the implementation:
+\begin{equation*}
+	\begin{aligned}
+	\mu =  10.0591 \\
+	\sigma =  2.5696 \\
+	\end{aligned}
+\end{equation*}
 
+\begin{figure} [h]
+ \centering
+  \includegraphics[width=4in]{./plot.jpg}
+  \caption{Data and fixed gaussian distribution with MLE}
+\end{figure}
 
-
-
+It plots histogram of the dataset vector with normalization set to probability density function in order to match with the plot of the linear space of maximum likelihood distribution. 
+\newline\newline\newline\newline
 \section{Question 4}
 \subsection{}
 The prior probability for \writey{y}:
